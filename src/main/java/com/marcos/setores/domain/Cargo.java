@@ -22,10 +22,13 @@ public class Cargo extends AbstractEntity<Long> {
 	public Cargo() {
 	}
 
-	public Cargo(String nome) {
+	public Cargo(String nome, Departamento departamento) {
 		super();
 		this.nome = nome;
+		this.departamento = departamento;
 	}
+
+
 
 	public String getNome() {
 		return nome;
