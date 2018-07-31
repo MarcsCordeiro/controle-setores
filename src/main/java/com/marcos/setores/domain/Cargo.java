@@ -1,8 +1,12 @@
 package com.marcos.setores.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -18,6 +22,9 @@ public class Cargo extends AbstractEntity<Long> {
 	@ManyToOne
 	@JoinColumn(name="id_departamento_fk")
 	private Departamento departamento;
+	
+	@OneToMany(mappedBy="cargo")
+	private List<Funcionario> funcionarios = new ArrayList<>();
 	
 	public Cargo() {
 	}
@@ -44,6 +51,14 @@ public class Cargo extends AbstractEntity<Long> {
 
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
 	}
 	
 	
