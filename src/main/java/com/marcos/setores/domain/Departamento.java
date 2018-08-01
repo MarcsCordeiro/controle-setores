@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Departamento extends AbstractEntity<Long>{
 
 	private String nome;
+	
 	@JsonManagedReference
 	@OneToMany(mappedBy="departamento")
 	private List<Cargo> cargos = new ArrayList<>();

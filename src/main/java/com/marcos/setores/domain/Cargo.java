@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @SuppressWarnings("serial")
 @Entity
@@ -23,6 +24,7 @@ public class Cargo extends AbstractEntity<Long> {
 	@JoinColumn(name="id_departamento_fk")
 	private Departamento departamento;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="cargo")
 	private List<Funcionario> funcionarios = new ArrayList<>();
 	

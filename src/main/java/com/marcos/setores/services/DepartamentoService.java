@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.marcos.setores.domain.Departamento;
 import com.marcos.setores.repositores.DepartamentosRepository;
+import com.marcos.setores.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class DepartamentoService {
@@ -16,6 +17,6 @@ public class DepartamentoService {
 	
 	public Departamento bucarId(Long id) {
 		Optional<Departamento> obj = dr.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ",Tipo: " + Departamento.class.getName()));
 	}
 }
